@@ -4,17 +4,7 @@ Generate Rails skeletons without having to globally install Rails and its bajill
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem "railyard"
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it globally with:
 
     $ gem install railyard
 
