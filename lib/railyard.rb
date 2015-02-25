@@ -46,6 +46,23 @@ module Railyard
       rails_new(args)
     end
 
+    desc "plugin [APP_PATH]", "Create a new Rails Engine"
+    def plugin(app_path = nil, *args)
+      if !installed?
+        puts "Installing Rails..."
+        install
+      end
+
+      if app_path && app_path !~ /^--?/
+        args.unshift expand_path(app_path)
+        args << "--skip-bundle" unless args.include?("--skip-bundle")
+      else
+        args << "--help"
+      end
+
+      rails_plugin(args)
+    end
+
     def help
       puts "railyard #{Railyard::VERSION}"
       super
@@ -55,6 +72,10 @@ module Railyard
 
       def rails_new(args)
         sandbox("bundle exec rails new #{args.join(' ')}")
+      end
+
+      def rails_plugin(args)
+        sandbox("bundle exec rails plugin new #{args.join(' ')}")
       end
 
       def installed?
