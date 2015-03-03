@@ -10,7 +10,7 @@ Install it globally with:
 
 ## Usage
 
-There are only three commands, `version`, `new` and `plugin`.
+There are only three commands, `version`, `new`, and `plugin`.
 
     $ railyard version 4.1.1
     $ railyard new APP_NAME
