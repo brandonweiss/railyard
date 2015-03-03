@@ -11,15 +11,22 @@ module Railyard
 
     desc "version [NUMBER]", "Show or change the Rails version"
     def version(number = nil)
-      sandbox("bundle exec rails --version") and return unless number
+      if number
+        message = installed? ? "Changing Rails version..." : "Installing Rails..."
 
-      Gemfile.new(gemfile_path).update_version(number)
+        Gemfile.new(gemfile_path).update_version(number)
+        puts message
 
-      puts "Changing Rails version..."
-      return if installed?
+        success = install
+        puts "Rails version #{number} doesn't appear to exist." unless success
+      else
+        if !installed?
+          puts "Installing Rails..."
+          install
+        end
 
-      success = install
-      puts "Rails version #{number} doesn't appear to exist." unless success
+        sandbox("bundle exec rails --version")
+      end
     end
 
     desc "new [APP_PATH]", "Create a new Rails application"
