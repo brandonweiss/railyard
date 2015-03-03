@@ -6,22 +6,23 @@ module Railyard
     end
 
     def update_version(number)
-      body = read
+      body  = read
+      lines = body.split("\n")
+      rails = lines.find { |line| line =~ /rails/ }
 
-      if match = body.match(/^gem \"rails\", \"(\d+(?:\.\d+(?:\.\d+)?)?)\"$/)
-        body.gsub!(match[1], number)
+      if match = rails.match(/(\d[\d\.]{0,})/)
+        new_rails = rails.gsub(match[1], number)
       else
-        body.gsub!(/, \"[\d\.]+\"/, "")
+        new_rails = "#{rails}, \"#{number}\""
       end
+
+      body = lines.join("\n") + "\n"
+      body.gsub!(rails, new_rails)
 
       write(body)
     end
 
   private
-
-    def remove_version(body)
-      body.gsub(/, \"[\d\.]+\"/, "")
-    end
 
     def read
       File.read(@path)
