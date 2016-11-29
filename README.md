@@ -22,6 +22,11 @@ Right now Railyard doesn't manage Ruby versions for you—Railyard runs in whate
 
 The plugin command is used to generate a [Rails Engine](http://guides.rubyonrails.org/engines.html).
 
+### Problems
+
+If it doesn’t appear to be working and you’re on macOS run
+`xcode-select --install` and then try again. I noticed an issue recently when installing Rails it will fail out because of problems with Nokogiri. That should sort it out.
+
 ## Contributing
 
 1. Fork it ( https://github.com/brandonweiss/railyard/fork )
