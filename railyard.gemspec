@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake", "~> 10.3.2"
 
-  spec.add_dependency "bundler", "~> 1.13.6"
+  spec.add_dependency "bundler", "~> 1.16.4"
   spec.add_dependency "thor",    "~> 0.19.4"
 end
