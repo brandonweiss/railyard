@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 12.3.1"
 
   spec.add_dependency "bundler", "~> 1.16.4"
-  spec.add_dependency "thor",    "~> 0.19.4"
+  spec.add_dependency "thor",    "~> 0.20.0"
 end
